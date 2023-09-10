@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "postgres": "^3.3.5",
+    "tslib": "^2.6.2"
+  },
+  "name": "parallel-web",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node .",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17"
+  }
+}
