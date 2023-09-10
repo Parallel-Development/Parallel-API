@@ -12,3 +12,5 @@ function importFiles(directory: string) {
 }
 
 importFiles('routes');
+
+process.on('unhandledRejection', console.error)
