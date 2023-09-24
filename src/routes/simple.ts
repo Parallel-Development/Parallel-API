@@ -2,6 +2,7 @@
 
 import { app } from '../app';
 import sql from '../db';
+import crypto from 'crypto';
 
 app.get('/', async (req, res) => {
   const options = {
@@ -28,9 +29,27 @@ app.get('/style', async (req, res) => {
 })
 
 app.get('/chatlog/:id', async (req, res) => {
-  const query = await sql`SELECT "html" FROM "Chatlog" WHERE id = ${req.params.id}`;
+  const hash = crypto.createHash('sha256');
+  hash.update(req.params.id, 'hex');
+  const keyHash = hash.digest();
+
+  const query = await sql`SELECT * FROM "Chatlog" WHERE "keyHash" = ${keyHash}`;
   if (query.length === 0) return res.status(404).send('No chat log with that ID exists. It may have been automatically deleted.');
-  return res.send(query[0].html);
+
+  const chatlog = query[0];
+
+  try {
+    const decipher = crypto.createDecipheriv('aes-128-gcm', Buffer.from(req.params.id, 'hex'), chatlog.iv);
+    decipher.setAuthTag(chatlog.authTag);
+    const decipherBytes = Buffer.concat([decipher.update(chatlog.html), decipher.final()]);
+    const html = decipherBytes.toString('utf8');
+
+    res.setHeader('Content-Type', 'text/html');
+    return res.send(html);
+  } catch (e) {
+    console.error(e);
+    return res.status(500).send('Internal Server Error.');
+  }
 });
 
 app.get('/invite', async (req, res) => {
