@@ -29,6 +29,8 @@ app.get('/style', async (req, res) => {
 })
 
 app.get('/chatlog/:id', async (req, res) => {
+  if (req.params.id.length % 2 !== 0) return res.status(400).send('Invalid chatlog ID.');
+  
   const hash = crypto.createHash('sha256');
   hash.update(req.params.id, 'hex');
   const keyHash = hash.digest();
