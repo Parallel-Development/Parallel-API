@@ -1,0 +1,37 @@
+@import "/common.css";
+
+body {
+  background: none;
+  background-color: #121220;
+}
+
+.container {
+  margin-top: 100px;
+  margin: 10vw;
+  width: 80%;
+}
+
+.container > p {
+  color: #bbbbbb;
+  margin-bottom: 50px;
+}
+
+.container > h2 {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.container > ul > li {
+  color: #bbbbbb;
+  margin: 5px 0 5px 0;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+@media screen and (max-width: 990px) {
+  .container {
+    margin-top: 100px;
+  }
+}

@@ -16,7 +16,7 @@ app.get('/', async (req, res) => {
   return res.sendFile('home.html', options);
 });
 
-app.get('/style', async (req, res) => {
+app.get('/privacy', async (req, res) => {
   const options = {
     root: 'public',
     headers: {
@@ -25,8 +25,20 @@ app.get('/style', async (req, res) => {
     }
   };
 
-  return res.sendFile('home.css', options);
-})
+  return res.sendFile('privacy.html', options);
+});
+
+app.get('/terms', async (req, res) => {
+  const options = {
+    root: 'public',
+    headers: {
+      'x-timestamp': Date.now(),
+      'x-sent': true
+    }
+  };
+
+  return res.sendFile('terms.html', options);
+});
 
 app.get('/chatlog/:id', async (req, res) => {
   if (req.params.id.length % 2 !== 0) return res.status(400).send('Invalid chatlog ID.');
