@@ -1,4 +1,5 @@
 import './app'
+import './db';
 import fs from 'fs';
 
 //recursively import all files

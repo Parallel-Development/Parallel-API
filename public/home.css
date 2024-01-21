@@ -35,6 +35,8 @@
   margin-top: 50px;
   font-size: 20px;
   width: 150px;
+  background-color: #48badc;
+  color: white;
 }
 
 #spacer {
@@ -79,7 +81,7 @@
 }
 
 .features-paragraph > h2 {
-  color: #dc3545;
+  color: #48badc;
   font-weight: bold;
 }
 
