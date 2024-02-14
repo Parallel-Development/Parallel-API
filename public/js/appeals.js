@@ -10,6 +10,8 @@ const makeCard = (id, title, img) => {
   
   const baseCardImg = document.createElement('img');
   baseCardImg.classList.add('card-img-top');
+  if (img) img = `https://cdn.discordapp.com/icons/${id}/${img}`;
+
   baseCardImg.src = img ?? 'https://cdn.discordapp.com/icons/747624284008218787/0b8ca594d70931cb65ef947de263ccf1.webp';
   
   const baseCardBody = document.createElement('div');
