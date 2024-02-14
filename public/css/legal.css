@@ -1,14 +1,7 @@
-@import "/common.css";
+@import "/css/common.css";
 
 body {
-  background: none;
-  background-color: #121220;
-}
-
-.container {
-  margin-top: 100px;
-  margin: 10vw;
-  width: 80%;
+  background-color: #0c0724;;
 }
 
 .container > p {
@@ -28,10 +21,4 @@ body {
 
 .no-margin {
   margin: 0 !important;
-}
-
-@media screen and (max-width: 990px) {
-  .container {
-    margin-top: 100px;
-  }
 }

@@ -1,4 +1,4 @@
-import './app'
+import './app';
 import './db';
 import fs from 'fs';
 
@@ -14,4 +14,4 @@ function importFiles(directory: string) {
 
 importFiles('routes');
 
-process.on('unhandledRejection', console.error)
+process.on('unhandledRejection', console.error);
