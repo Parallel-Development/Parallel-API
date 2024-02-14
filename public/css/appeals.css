@@ -38,9 +38,23 @@
 @media screen and (max-width: 990px) {
   .title-container {
     margin-top: 100px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .title {
+    font-size: 10vw;
+  }
+
+  .description {
+    font-size: 4vw;
   }
 
   #servers-container {
     justify-content: center;
+  }
+
+  #account {
+    padding-bottom: 20px;
   }
 }
