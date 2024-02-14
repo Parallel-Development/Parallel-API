@@ -1,6 +1,6 @@
 import { app } from '../app';
 import { User } from '../types';
-import { API_ENDPOINT, refreshToken } from './oauth2';
+import { API_ENDPOINT, d30, refreshToken } from './oauth2';
 
 export async function getUser(req: any, res: any): Promise<User> {
   let { access_token, refresh_token } = req.cookies;
@@ -17,8 +17,8 @@ export async function getUser(req: any, res: any): Promise<User> {
     try {
       const refresh = await refreshToken(refresh_token);
 
-      res.cookie('access_token', refresh.access_token, { httpOnly: true });
-      res.cookie('refresh_token', refresh.refresh_token, { httpOnly: true });
+      res.cookie('access_token', refresh.access_token, { httpOnly: true, maxAge: d30 });
+      res.cookie('refresh_token', refresh.refresh_token, { httpOnly: true, maxAge: d30 });
 
       access_token = refresh.access_token;
       refresh_token = refresh.refresh_token;

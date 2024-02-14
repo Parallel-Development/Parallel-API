@@ -1,6 +1,7 @@
 import { app } from '../app';
 
 export const API_ENDPOINT = 'https://discord.com/api/v10';
+export const d30 = 2592000000;
 
 app.get('/oauth2/callback', async (req, res) => {
   if (req.query.error) return res.redirect('/');
@@ -30,8 +31,8 @@ app.get('/oauth2/callback', async (req, res) => {
 
   if (!scope.includes('identify')) return res.status(400).type('text/plain').send('Invalid scope.');
 
-  res.cookie('access_token', access_token, { httpOnly: true });
-  res.cookie('refresh_token', refresh_token, { httpOnly: true });
+  res.cookie('access_token', access_token, { httpOnly: true, maxAge: d30 });
+  res.cookie('refresh_token', refresh_token, { httpOnly: true, maxAge: d30 });
 
   return res.redirect(redirect_uri ? `${process.env.ORIGIN}/${redirect_uri}` : '/');
 });
