@@ -36,8 +36,8 @@ form.addEventListener('submit', async e => {
     console.log(response);
     alert(`An error occoured when trying to submit the ban appeal:\n${response}`);
     loading.classList.add('d-none');
-    submitBtn.classList.add('disabled');
-    submitBtn.disabled = true;
+    submitBtn.classList.remove('disabled');
+    submitBtn.disabled = false;
     return;
   }
 
