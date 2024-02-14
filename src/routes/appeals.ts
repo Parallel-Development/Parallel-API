@@ -60,6 +60,8 @@ app.post('/appeals/submit', async (req, res) => {
     if (checkedQuestions.includes(q.question) || !infraction.appealQuestions.includes(q.question))
       return res.status(400).type('text/plain').send('Invalid form body.');
 
+    checkedQuestions.push(q.question);
+
     if (Object.keys(questions).length > 2 || !('question' in q && 'response' in q))
       return res.status(400).type('text/plain').send('Invalid form body.');
 
