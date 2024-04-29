@@ -93,7 +93,7 @@ app.post('/appeals/submit', async (req, res) => {
           icon_url: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`
         },
         description: `**Infraction ID:** ${infraction.id}\n**Infraction Type:** Ban\n\n${questions
-          .map(q => `Question: ${q.question}\nResponse: ${q.response}`)
+          .map(q => `** — ${q.question} —**\n${q.response}`)
           .join('\n\n')}`,
         timestamp: new Date().toISOString(),
         color: 0x5865f2
@@ -104,25 +104,25 @@ app.post('/appeals/submit', async (req, res) => {
           type: 2,
           style: 3,
           label: 'Accept',
-          custom_id: `appeal-manager:accept.${infraction.id}`
+          custom_id: `appeal-manager:accept?${infraction.id}`
         },
         {
           type: 2,
           style: 4,
           label: 'Deny',
-          custom_id: `appeal-manager:deny.${infraction.id}`
+          custom_id: `appeal-manager:deny?${infraction.id}`
         },
         {
           type: 2,
           style: 2,
           label: 'Disregard',
-          custom_id: `appeal-manager:disregard.${infraction.id}`
+          custom_id: `appeal-manager:disregard?${infraction.id}`
         },
         {
           type: 2,
           style: 1,
           label: 'Context',
-          custom_id: `appeal-manager:context.${infraction.id}`
+          custom_id: `appeal-manager:context?${infraction.id}`
         }
       ];
 

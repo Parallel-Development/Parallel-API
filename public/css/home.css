@@ -12,7 +12,7 @@
 }
 
 #right {
-  margin-left: 300px;
+  margin-left: 200px;
 }
 
 #big-icon {
@@ -107,7 +107,6 @@
 @media screen and (max-width: 990px) {
   .title-container {
     margin-top: 100px;
-    text-align: center;
   }
 
   #right {
