@@ -34,8 +34,8 @@ app.post('/appeals/submit', async (req, res) => {
   const infractions: (AppealEligibility & {
     id: true;
     appealQuestions: string[];
-    appealAlertWebhookId: string | null;
-  })[] = await sql`SELECT I.id, G."appealAllowed", G."appealQuestions", G."appealAlertWebhookId",
+    appealAlertWebhookURL: string | null;
+  })[] = await sql`SELECT I.id, G."appealAllowed", G."appealQuestions", G."appealAlertWebhookURL",
     COALESCE(I."userId" = ANY(G."appealBlacklist"), false) as "blacklisted", 
     EXISTS(SELECT FROM "Appeal" A WHERE A.id = I.id) as "appealExists"
       FROM "Infraction" I
@@ -77,71 +77,61 @@ app.post('/appeals/submit', async (req, res) => {
   VALUES (${infraction.id}, ${user.id}, ${guildId}, ${questions as any}, ${Date.now()})`;
 
   // send to Discord
-  if (infraction.appealAlertWebhookId) {
-    const r = await fetch(`${API_ENDPOINT}/webhooks/${infraction.appealAlertWebhookId}`, {
-      headers: {
-        Authorization: `Bot ${process.env.TOKEN}`
+  if (infraction.appealAlertWebhookURL) {
+    const embed = {
+      author: {
+        name: `Infraction appeal from ${user.username} (${user.id})`,
+        icon_url: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`
+      },
+      description: `**Infraction ID:** ${infraction.id}\n**Infraction Type:** Ban\n\n${questions
+        .map(q => `** — ${q.question} —**\n${q.response}`)
+        .join('\n\n')}`,
+      timestamp: new Date().toISOString(),
+      color: 0x5865f2
+    };
+
+    const buttons = [
+      {
+        type: 2,
+        style: 3,
+        label: 'Accept',
+        custom_id: `appeal-manager:accept?${infraction.id}`
+      },
+      {
+        type: 2,
+        style: 4,
+        label: 'Deny',
+        custom_id: `appeal-manager:deny?${infraction.id}`
+      },
+      {
+        type: 2,
+        style: 2,
+        label: 'Disregard',
+        custom_id: `appeal-manager:disregard?${infraction.id}`
+      },
+      {
+        type: 2,
+        style: 1,
+        label: 'Context',
+        custom_id: `appeal-manager:context?${infraction.id}`
       }
-    });
+    ];
 
-    const response = await r.json();
+    const row = {
+      type: 1,
+      components: buttons
+    };
 
-    if (r.ok) {
-      const embed = {
-        author: {
-          name: `Infraction appeal from ${user.username} (${user.id})`,
-          icon_url: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`
-        },
-        description: `**Infraction ID:** ${infraction.id}\n**Infraction Type:** Ban\n\n${questions
-          .map(q => `** — ${q.question} —**\n${q.response}`)
-          .join('\n\n')}`,
-        timestamp: new Date().toISOString(),
-        color: 0x5865f2
-      };
-
-      const buttons = [
-        {
-          type: 2,
-          style: 3,
-          label: 'Accept',
-          custom_id: `appeal-manager:accept?${infraction.id}`
-        },
-        {
-          type: 2,
-          style: 4,
-          label: 'Deny',
-          custom_id: `appeal-manager:deny?${infraction.id}`
-        },
-        {
-          type: 2,
-          style: 2,
-          label: 'Disregard',
-          custom_id: `appeal-manager:disregard?${infraction.id}`
-        },
-        {
-          type: 2,
-          style: 1,
-          label: 'Context',
-          custom_id: `appeal-manager:context?${infraction.id}`
-        }
-      ];
-
-      const row = {
-        type: 1,
-        components: buttons
-      };
-
-      await fetch(response.url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          embeds: [embed],
-          components: [row]
-        })
-      });
-    }
+    await fetch(infraction.appealAlertWebhookURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        embeds: [embed],
+        components: [row]
+      })
+    }).catch(() => {});
   }
 
   return res.sendStatus(201);
