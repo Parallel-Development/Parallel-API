@@ -1,74 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Open Graph meta tags for embedding -->
-  <meta property="og:title" content="Parallel: The Best Moderation Bot">
-  <meta property="og:description" content="Parallel is an advanced moderation bot loaded with plenty of modern-moderation features capable of delivering precise moderation.">
-  <meta property="og:url" content="https://parallelbot.xyz">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Open Graph meta tags for embedding -->
+    <meta property="og:title" content="Parallel: The Best Moderation Bot">
+    <meta property="og:description" content="Parallel is an advanced moderation bot loaded with plenty of modern-moderation features capable of delivering precise moderation.">
+    <meta property="og:url" content="https://parallelbot.xyz">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="/css/legal.css">
-  <link rel="icon" href="/imgs/favicon.png" type="image/png">
-  <title>Parallel - Terms</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="icon" href="/imgs/favicon.png" type="image/png">
+    <title>Parallel - Terms</title>
+    <style>
+        /* Minimal custom CSS for elements that Bootstrap can't handle */
+        .navbar-brand img {
+            height: 30px;
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">
-        <img id="navbar-icon" src="/imgs/logo.png">
-        Parallel
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/invite">Invite</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/discord">Discord</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://docs.parallelbot.xyz">Docs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/appeals">Ban Appeals</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="/imgs/logo.png" alt="Parallel Logo" class="rounded-circle">
+                Parallel
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/invite">Invite</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/discord">Discord</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://docs.parallelbot.xyz">Docs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/appeals">Ban Appeals</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  <div class="container">
-    <h1>Terms of Service of <b>Parallel</b></h1>
-    <br>
-
-    <p>This page lists all of the rules that must be followed while using Parallel. Violations of these rules
-      may result in a user or a server being banned from using Parallel. 
-      Bans may be appealed or limited to a duration of time.
-      By using Parallel, you agree to these terms of service. If you do not,
-      please refrain from using the bot.
-      If you have any questions regarding the terms of service, please contact us through the <a href="https://discord.gg/v2AV3XtnBM">support server</a>.
-    </p>
-    <br><br>
-
-    <p class="no-margin">The following are <b>NOT</b> allowed:</p>
-
-    <ul>
-      <li>Misconduct: Using Parallel as an aid to carrying out activities that are either illegal or against the Discord Terms of Service. 
-        A server with Parallel that performs misconduct (Parallel not directly being used to perform misconduct) may also be subject to being banned from Parallel.</li>
-      
-      <li>Abuse: Abusing Parallel in any way, the act of intentionally trying to cause problems to the bot. This includes API spam.</li>
-      <li>Defamation: Intentionally defaming Parallel based off false claims.</li>
-      <li>Impersonation: Disguising another bot as Parallel to trick users into believing that it is the official Parallel bot.</li>
-      <li>License Infringement: Using the Parallel source code and violating the <a href="https://github.com/Parallel-Development/Parallel/blob/main/LICENSE">license</a>.</li>
-    </ul>
-
-    <small>Last Updated: January 6, 2024</small>
-  </div>
+    <!-- Main Content -->
+    <main class="container mt-5 pt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="display-5 fw-bold mb-4">Terms of Service for <span class="fw-bold">Parallel</span></h1>
+                
+                <p class="lead mb-5">
+                    These Terms of Service outline the rules and guidelines for using Parallel. By utilizing Parallel, you agree to adhere to these terms. 
+                    Failure to comply may result in temporary or permanent bans for users or servers. If you do not agree with these terms, please discontinue 
+                    the use of the bot. For any questions or clarifications regarding the Terms of Service, feel free to reach out to us via our 
+                    <a href="https://discord.gg/v2AV3XtnBM" class="text-danger">support server</a>.
+                </p>
+    
+                <section class="mb-5">
+                    <p class="fw-bold mb-3">The following activities are strictly <span class="text-danger">prohibited</span>:</p>
+    
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-transparent">
+                            <span class="fw-semibold">Misconduct:</span> Utilizing Parallel to facilitate illegal activities or violations of the 
+                            <a href="https://discord.com/terms" class="text-danger">Discord Terms of Service</a>. Servers engaging in such misconduct, 
+                            even if Parallel is not directly involved, may also face penalties.
+                        </li>
+                        
+                        <li class="list-group-item bg-transparent">
+                            <span class="fw-semibold">Abuse:</span> Any intentional misuse of Parallel, including but not limited to spamming APIs or 
+                            other activities designed to disrupt the bot's functionality.
+                        </li>
+    
+                        <li class="list-group-item bg-transparent">
+                            <span class="fw-semibold">Defamation:</span> Spreading false information with the intent to harm Parallel's reputation.
+                        </li>
+    
+                        <li class="list-group-item bg-transparent">
+                            <span class="fw-semibold">Impersonation:</span> Creating or using bots that mimic Parallel with the intent to deceive users 
+                            into believing they are interacting with the official Parallel bot.
+                        </li>
+    
+                        <li class="list-group-item bg-transparent">
+                            <span class="fw-semibold">License Violation:</span> Misusing Parallel's source code in a manner that breaches the 
+                            <a href="https://github.com/Parallel-Development/Parallel/blob/main/LICENSE" class="text-danger">license agreement</a>.
+                        </li>
+                    </ul>
+                </section>
+    
+                <footer class="text-muted mt-5 pt-4 border-top">
+                    <small>Last Updated: January 6, 2024</small>
+                </footer>
+            </div>
+        </div>
+    </main>
+    
 </body>
 </html>

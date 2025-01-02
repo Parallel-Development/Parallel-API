@@ -9,9 +9,6 @@
     "postgres": "^3.3.5",
     "tslib": "^2.6.2"
   },
-  "engines": {
-    "node": "21.x"
-  },
   "name": "parallel-web",
   "version": "1.0.0",
   "main": "dist/index.js",

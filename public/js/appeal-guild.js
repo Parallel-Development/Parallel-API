@@ -2,7 +2,6 @@ const guildName = document.getElementById('guild-name');
 const reason = document.getElementById('reason');
 const date = document.getElementById('date');
 const expires = document.getElementById('expires');
-const br = document.getElementById('br');
 const form = document.getElementById('form');
 const submitBtn = document.getElementById('submit-btn');
 const loading = document.getElementById('loading');
@@ -69,7 +68,7 @@ const makeQuestion = (question, i) => {
 
   group.append(label, textarea);
 
-  form.insertBefore(group, br);
+  form.insertBefore(group, submitBtn);
 }
 
 const toDate = timestamp => {

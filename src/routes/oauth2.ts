@@ -78,5 +78,5 @@ function makeRedirectURI(redirect?: string) {
 
 export function makeDiscordAuthURI(redirect?: string) {
   const redirectURI = encodeURIComponent(makeRedirectURI(redirect));
-  return `https://discord.com/api/oauth2/authorize?client_id=${process.env.CLIENT_ID}&response_type=code&redirect_uri=${redirectURI}&scope=identify`;
+  return `https://discord.com/api/oauth2/authorize?client_id=${process.env.CLIENT_ID}&response_type=code&redirect_uri=${redirectURI}&scope=identify+guilds`;
 }
